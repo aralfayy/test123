@@ -11,8 +11,8 @@ const Pokedex = () => {
     const res = await fetch(pokemonData);
     const data = await res.json();
 
-    const getPokeDetails = async () => {
-      pokelist.forEach(async (pokeDetails) => {
+    function setPokelist(results) {
+      results.forEach(async (pokeDetails) => {
         const res = await fetch(pokeDetails.url);
         const data = await res.json();
         console.log(data);
@@ -26,9 +26,28 @@ const Pokedex = () => {
           fetchedPokeDetails,
         ]);
       });
-    };
-    getPokeDetails(data.results);
+    }
+
+    setPokelist(data.results);
   };
+
+  // const getPokeDetails = async () => {
+  //   pokelist.forEach(async (pokeDetails) => {
+
+  //     const res = await fetch(pokeDetails.url);
+  //     const data = await res.json();
+
+  //     // append data to existing pokelist element
+  //     let fetchedPokeDetails = {
+  //       ...pokeDetails,
+  //       ...data,
+  //     };
+  //     setFetchedPokelist((fetchedPokelist) => [
+  //       ...fetchedPokelist,
+  //       fetchedPokeDetails,
+  //     ]);
+  //   });
+  // };
 
   useEffect(() => {
     getPokelist();
@@ -41,7 +60,7 @@ const Pokedex = () => {
         <div className="pagination">
           <h1>{pokelist.name}</h1>
 
-          {/* {pokelist.map((pokemonMap, index) => (
+          {pokelist.map((pokemonMap, index) => (
             <Pokecard
               key={index}
               id={pokemonMap.id}
@@ -49,7 +68,7 @@ const Pokedex = () => {
               name={pokemonMap.name}
               type={pokemonMap.types[0].type.name}
             />
-          ))} */}
+          ))}
         </div>
       </div>
       {/* <button onClick={() => getPokemon()}> Load More</button> */}
