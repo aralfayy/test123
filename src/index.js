@@ -6,6 +6,7 @@ import Pokedex from "./Pokedex/Pokedex";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import reportWebVitals from "./reportWebVitals";
+import Pokechild from "./Pokedex/Childpage/Pokechild";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +14,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/" exact component={App} />
         <Route path="/pokedex" exact component={Pokedex} />
+        <Route path={`${Pokedex}/:pokeId`} exact component={Pokechild} />
       </Switch>
     </Router>
   </React.StrictMode>,
