@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Pokecard from "./components/Pokecard";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
 import "./poke.css";
 
 const Pokedex = () => {
-  const pokemonData = `https://pokeapi.co/api/v2/pokemon?limit=5&offset=0`;
-  // const pokeNext = `https://pokeapi.co/api/v2/pokemon?limit=5&offset=${lastID}`;
   const [pokemonURL, setpokemonURL] = useState(
     "https://pokeapi.co/api/v2/pokemon/?limit=5"
   );
-
+  //state next and previous page
   const [pokelist, setPokelist] = useState([]);
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
@@ -22,10 +25,9 @@ const Pokedex = () => {
       results.forEach(async (pokeDetails) => {
         const res = await fetch(pokeDetails.url);
         const data = await res.json();
+        // console.log(data);
 
-        console.log(data);
         // append data to existing pokelist element
-
         setPokelist((fetchedPokeDetails) => [...fetchedPokeDetails, data]);
         await pokelist.sort((a, b) => a.id - b.id);
       });
@@ -35,7 +37,7 @@ const Pokedex = () => {
     setPokemonlist(data.results);
     // console.log(data.results);
   };
-
+  // console.log(pokelist);
   useEffect(() => {
     getPokelist();
   }, [pokemonURL]);
@@ -46,13 +48,14 @@ const Pokedex = () => {
       <div className="pokeContainer">
         <div className="pagination">
           {pokelist.map((pokemonStats) => (
-            <Link to={`/pokedex/${pokemonStats.id}`}>
+            <Link to={`/pokedex/${pokemonStats.name}`}>
               <div className="pokeCard">
                 <p>#0{pokemonStats.id}</p>
                 <img
                   width={80}
                   height={80}
                   src={pokemonStats.sprites.other.dream_world.front_default}
+                  alt="aiueo"
                 ></img>
                 <h3>{pokemonStats.name}</h3>
                 type={pokemonStats.types[0].type.name}

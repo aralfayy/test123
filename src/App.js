@@ -12,7 +12,9 @@ function App() {
           <ul>
             <Link to="/pokedex">Pokemon</Link>
           </ul>
-          <ul>csv</ul>
+          <ul>
+            <Link to="/sorting">CSV Sorting</Link>
+          </ul>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 const CSVtoJSON = require("csvtojson");
 const JSONToCSV = require("json2csv").parse;
-const fs = require("fs");
+// const fs = require("fs");
 
 const csvFilePath = "./filecabang.csv";
 CSVtoJSON()
@@ -14,16 +14,16 @@ CSVtoJSON()
       Provinsi: "Selatan",
       Jumlah_Pegawai: "30",
     });
-    const csv = JSONToCSV(source, {
-      fields: [
-        "Nama_Cabang",
-        "Alamat_Cabang",
-        "Kota",
-        "Provinsi",
-        "Jumlah_Pegawai",
-      ],
-    });
-    fs.writeFileSync(csvFilePath, csv);
+    // const csv = JSONToCSV(source, {
+    //   fields: [
+    //     "Nama_Cabang",
+    //     "Alamat_Cabang",
+    //     "Kota",
+    //     "Provinsi",
+    //     "Jumlah_Pegawai",
+    //   ],
+    // });
+    // fs.writeFileSync(csvFilePath, csv);
   });
 
 export default CSVtoJSON;

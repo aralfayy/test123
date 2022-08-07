@@ -7,14 +7,17 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import reportWebVitals from "./reportWebVitals";
 import Pokechild from "./Pokedex/Childpage/Pokechild";
+import Cobapok from "./Pokedex/Childpage/Cobapok";
+import Sorting from "./csvdat/Sorting";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
         <Route path="/" exact component={App} />
+        <Route path="/sorting" exact component={Sorting} />
         <Route path="/pokedex" exact component={Pokedex} />
-        <Route path={`${Pokedex}/:pokeId`} exact component={Pokechild} />
+        <Route path="/pokedex/:pokeName" component={Pokechild} />
       </Switch>
     </Router>
   </React.StrictMode>,
