@@ -4,18 +4,25 @@ import numpy as np
 dataFrame = pd.read_csv("./src/csvdat/filecabang.csv")
 # print("\nInput CSV file = \n", dataFrame)
 para = ["Nama_Cabang", "Alamat_Cabang", "Kota", "Provinsi", "Jumlah_Pegawai"]
-print(para)
+# print("List Kolom :\n")
+# [print(x) for x in para]
 
-i = (input("\nMasukkan Tabel yang ingin disortir : ", ))
-sort = (input("\nAscendant/Descendant? : "))
-page = (input("\nMasukkan mulai dari data keberapa yang ingin ditampilkan : "))
-rowDat = (input("\nMasukkan Jumlah baris yang ingin ditampilkan : "))
+
+i = int(input("\nPilih Kolom yang ingin disortir(\n 1. Nama Cabang\n 2.Alamat Cabang\n 3. Kota\n 4. Provinsi\n 5.Jumlah Pegawai\n) : "))
+sort = (input("\nAscendant/Descendant? :(A/D) "))
+page = int(input("\nMasukkan mulai dari data keberapa yang ingin ditampilkan : "))
+rowDat = int(input("\nMasukkan Jumlah baris yang ingin ditampilkan : "))
+
 
 if sort == "A":
-    dataFrame.sort_values([i],
+    dataFrame.sort_values(para[i-1],
                           axis=0, ascending=True, inplace=True, na_position='first')
-    print("\nSorted CSV file (according to multiple columns) = \n ", dataFrame)
+    ascend = dataFrame.iloc[page-1:rowDat]
+    print("\nSorted CSV file (according to multiple columns) = \n ", ascend)
+
+
 else:
-    dataFrame.sort_values([i], axis=0, ascending=False,
+    dataFrame.sort_values(para[i-1], axis=0, ascending=False,
                           inplace=True, na_position='first')
-    print("\nSorted CSV file (according to multiple columns) = \n ", dataFrame)
+    descend = dataFrame.iloc[page-1:rowDat]
+    print("\nSorted CSV file (according to multiple columns) = \n ", descend)
