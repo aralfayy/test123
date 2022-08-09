@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
 import "./Pokechild.css";
 
 const Cobapok = () => {
@@ -14,13 +15,16 @@ const Cobapok = () => {
 
     setPokeDetails(data);
   };
+
   useEffect(() => {
     getPokeDetails();
   }, []);
-  <img width={80} height={80} src={pokeDetails} alt="aiueo"></img>;
-  console.log(pokeDetails);
+
   return (
     <div className="detailContainer">
+      <Link to="/" className="titlePoke">
+        <h1>Maybank Pokedex</h1>
+      </Link>
       <div className="detailCard">
         <div className="imagePoke">
           {pokeDetails && pokeDetails.sprites && pokeDetails.sprites.other && (
@@ -33,13 +37,20 @@ const Cobapok = () => {
           )}
         </div>
         <div>
-          <div className="idPoke">#0{pokeDetails.id}</div>
+          <div className="idPoke"> #00{pokeDetails.id}</div>
           <div className="namaPoke">{pokeDetails.name}</div>
           <div className="typePoke">
             {pokeDetails &&
               pokeDetails.types &&
               pokeDetails.types.map((type) => (
-                <div className={`${type.type.name} "typePokeEach"`}>
+                <div
+                  className={`${type.type.name} + "typePokeEach"`}
+                  style={{
+                    borderRadius: "20px",
+                    padding: "0.5rem 4rem",
+                    textTransform: "capitalize",
+                  }}
+                >
                   {type.type.name}
                 </div>
               ))}
@@ -50,7 +61,8 @@ const Cobapok = () => {
               pokeDetails.stats &&
               pokeDetails.stats.map((stat) => (
                 <div>
-                  {stat.stat.name} : {stat.base_stat}
+                  <div className="statNumber">{stat.base_stat}</div>
+                  {stat.stat.name.replace(/-/g, " ")}
                 </div>
               ))}
           </div>

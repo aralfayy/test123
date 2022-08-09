@@ -3,14 +3,18 @@ import { Link } from "react-router-dom";
 import "./poke.css";
 
 const Pokedex = () => {
+  //State url untuk store data url
   const [pokemonURL, setpokemonURL] = useState(
     "https://pokeapi.co/api/v2/pokemon/?limit=5"
   );
-  //state next and previous page
+  //State untuk store data
   const [pokelist, setPokelist] = useState([]);
+
+  //state next and previous page
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
 
+  //Fetching data
   const getPokelist = async () => {
     const res = await fetch(pokemonURL);
     const data = await res.json();
@@ -38,18 +42,22 @@ const Pokedex = () => {
     getPokelist();
   }, [pokemonURL]);
 
-  // const style =
-  //   pokelist.types +
-  //    " pagination";
-
   return (
     <div className="appContainer">
-      <h1>Maybank Pokedex</h1>
+      <Link to="/" className="titlePoke">
+        <h1>Maybank Pokedex</h1>
+      </Link>
+
       <div className="pokeContainer">
         <div className="pagination">
+          {/* Sebelum mapping data di store dulu kemudian ditampilkan */}
           {pokelist &&
             pokelist.map((pokemonStats, i) => (
-              <div key={i} className={`${pokemonStats.types[0].type.name}`}>
+              <div
+                key={i}
+                className={`${pokemonStats.types[0].type.name}`}
+                style={{ borderRadius: "20px" }}
+              >
                 <div className="pokeCard">
                   <Link
                     to={`/pokedex/${pokemonStats.name}`}

@@ -23,6 +23,7 @@
   font-size: 48px;
   font-weight: bold;
   text-transform: Capitalize;
+  padding: 0.5rem 0;
 }
 .imagePoke {
   padding: 2rem 2rem 1rem 1rem;
@@ -41,10 +42,9 @@
 }
 .typePokeEach {
   background-color: black;
-  color: #ffdd05;
+
   border-radius: 5rem;
   padding: 0.5rem 4rem;
-  text-transform: capitalize;
 }
 .rock {
   background-color: rgb(148, 81, 81);
@@ -76,14 +76,41 @@
 .water {
   background-color: #e0f1fd;
 }
+.ground {
+  background-color: #f7e7b5;
+}
+.fighting {
+  background-color: #e6e0d4;
+}
+.dragon {
+  background-color: #8f7ae6;
+}
+.psychic {
+  background-color: #eaeda1;
+}
+.flying {
+  background-color: #e6e6e6;
+}
+.ice {
+  background-color: #dfeffc;
+}
 .statsPoke {
   margin: 1rem 0;
-  display: flex;
-  background-color: black;
-  color: #ffdd05;
+  display: grid;
+  background: rgba(0, 0, 0, 0.25);
+  color: #black;
   border-radius: 1rem;
-  padding: 0.5rem 4rem;
+  padding: 1rem 2rem;
   font-size: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 40px;
+  text-align: justify;
+  text-transform: capitalize;
+}
+.statNumber {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
 }
 .skillPoke {
   display: flex;
@@ -97,4 +124,19 @@
   border-radius: 5rem;
   padding: 0.5rem 3rem;
   text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  .detailCard {
+    display: inline-block;
+    padding: 2rem;
+    text-align: center;
+    gap: 10px;
+  }
+  .typePoke {
+    justify-content: center;
+  }
+  .skillPoke {
+    justify-content: center;
+  }
 }

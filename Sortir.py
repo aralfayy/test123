@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 # DataFrame to read our input CS file
 dataFrame = pd.read_csv("./src/csvdat/filecabang.csv")
-# print("\nInput CSV file = \n", dataFrame)
+print(dataFrame)
 para = ["Nama_Cabang", "Alamat_Cabang", "Kota", "Provinsi", "Jumlah_Pegawai"]
 # print("List Kolom :\n")
 # [print(x) for x in para]
